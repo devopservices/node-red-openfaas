@@ -35,15 +35,17 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config)
         this.name = config.name
         this.gateway = config.gateway
-        var node = this
+        const node = this
 
         this.on('input', function(msg) {
             const payload = tryParse(msg.payload)
             const json = payload !== msg.payload
+            const gateway = node.gateway
+            const name = node.name
 
-            functionExists({node.gateway, node.name}).then((exists) => {
+            functionExists({gateway, name}).then((exists) => {
                 if(exists) {
-                    return functionInvoke({node.gateway, node.name, payload, json})
+                    return functionInvoke({gateway, name, payload, json})
                         .then((payload) => {
                             msg.payload = payload
                             node.send(msg)
