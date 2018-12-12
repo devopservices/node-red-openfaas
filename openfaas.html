@@ -3,7 +3,8 @@
         category: 'function',
         color: '#a6bbcf',
         defaults: {
-            name: {value:""}
+            name: {value:""},
+            gateway: {value:"http://127.0.0.1:31112"}
         },
         inputs:1,
         outputs:1,
@@ -11,59 +12,19 @@
         color: "#C0DEED",
         label: function() {
             return this.name || "OpenFaaS function";
-        },
-        // oneditprepare: function(ev) {
-        //     jQuery(function($) {
-        //         var urlfield = $("#node-input-server")
-        //         var url = urlfield.val() ? urlfield.val() : urlfield.attr('placeholder')
-        //         console.warn(url);
-        //         $.getJSON(url)
-        //             .then(function(list){
-        //                 console.warn(list);
-        //             })
-        //             .catch(function(e){
-        //                 console.warn(e);
-        //             })
-        //     })
-        // }
+        }
     });
 </script>
 
 <script type="text/x-red" data-template-name="openfaas">
     <div class="form-row">
-        <label for="node-input-name"><i class=""></i> Function Name</label>
+        <label for="node-input-name"><i class="icon-tag"></i> Function Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
     <div class="form-row">
-        <label for="node-input-server"><i class=""></i> Server</label>
-        <input type="text" id="node-input-server" placeholder="http://127.0.0.1:8080">
+        <label for="node-input-gateway"><i class="icon-tag"></i> Gateway URL</label>
+        <input type="text" id="node-input-gateway" placeholder="http://127.0.0.1:31112">
     </div>
-    <!--
-    <div class="form-row">
-        <label for="node-input-image"><i class=""></i> Image</label>
-        <input type="text" id="node-input-image" placeholder="Image name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-language"><i class=""></i> Language</label>
-        <select id="node-input-language" placeholder="">
-            <option>csharp</option>
-            <option>go-armhf</option>
-            <option>go</option>
-            <option>node</option>
-            <option>node-arm64</option>
-            <option>node-armhf</option>
-            <option>node</option>
-            <option>python-armhf</option>
-            <option>python</option>
-            <option>python3</option>
-            <option>ruby</option>
-        </select>
-    </div>
-    <div class="form-row">
-        <label for="node-input-body"><i class=""></i> Function body</label>
-        <textarea id="node-input-body" placeholder="" style="width:100%;height:240px;"></textarea>
-    </div>
-    -->
 </script>
 
 <script type="text/x-red" data-help-name="openfaas">
